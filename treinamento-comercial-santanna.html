@@ -1,0 +1,2080 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Comercial — Clínica Sant'Anna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #75A9A4;
+            --primary-dark: #1E4C49;
+            --primary-mid: #3D7872;
+            --primary-light: #B8D4D1;
+            --primary-ultra: #EAF3F2;
+            --accent: #B8D4D1;
+            --accent-dark: #B8D4D1;
+            --accent-light: #B8D4D1;
+            --bg: #F4F7F6;
+            --bg-card: #FFFFFF;
+            --text: #1A2E2D;
+            --text-muted: #6B8A88;
+            --text-light: #9AB5B3;
+            --border: #D5E5E3;
+            --success: #4CAF7D;
+            --warning: #F5A623;
+            --danger: #E05C5C;
+            --purple: #7B5EA7;
+            --purple-light: #F0EBF8;
+            --shadow: 0 2px 12px rgba(26, 46, 45, 0.08);
+            --shadow-lg: 0 8px 32px rgba(26, 46, 45, 0.12);
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════
+           HEADER
+        ═══════════════════════════════════ */
+        .header {
+            background: var(--primary-dark);
+            height: 60px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 34px;
+            height: 34px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            color: white;
+            letter-spacing: -0.5px;
+            flex-shrink: 0;
+        }
+
+        .header-text-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .header-text-sub {
+            font-size: 11px;
+            color: var(--primary-light);
+            font-weight: 400;
+        }
+
+        .header-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ═══════════════════════════════════
+           MODULE NAV
+        ═══════════════════════════════════ */
+        .module-nav {
+            background: white;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 60px;
+            z-index: 190;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .module-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .module-nav-inner {
+            display: flex;
+            padding: 0 20px;
+            min-width: max-content;
+        }
+
+        .nav-tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.18s;
+            white-space: nowrap;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .nav-tab:hover {
+            color: var(--primary-dark);
+            background: var(--primary-ultra);
+        }
+
+        .nav-tab.active {
+            color: var(--primary-dark);
+            border-bottom-color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-num {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--border);
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.18s;
+        }
+
+        .nav-tab:hover .nav-num,
+        .nav-tab.active .nav-num {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ═══════════════════════════════════
+           HERO
+        ═══════════════════════════════════ */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-mid) 55%, var(--primary) 100%);
+            color: white;
+            padding: 52px 24px 44px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--primary-light);
+            margin-bottom: 14px;
+        }
+
+        .hero-title {
+            font-size: clamp(22px, 4vw, 38px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .hero-title em {
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 540px;
+            margin: 0 auto 28px;
+        }
+
+        .hero-concept {
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-left: 4px solid var(--accent);
+            border-radius: var(--radius-sm);
+            padding: 15px 20px;
+            max-width: 580px;
+            margin: 0 auto 28px;
+            text-align: left;
+        }
+
+        .hero-concept-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .hero-concept p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+        }
+
+        .hero-pillars {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-pillar {
+            background: rgba(255, 255, 255, 0.11);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════
+           MAIN / SECTIONS
+        ═══════════════════════════════════ */
+        .main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 32px 20px 96px;
+        }
+
+        .module-section {
+            display: none;
+        }
+
+        .module-section.active {
+            display: block;
+        }
+
+        .section-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 620px;
+            margin-bottom: 28px;
+        }
+
+        /* ═══════════════════════════════════
+           PRINCIPLE BOX
+        ═══════════════════════════════════ */
+        .principle-box {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-mid) 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: 22px 26px;
+            margin-bottom: 24px;
+        }
+
+        .principle-box .label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+        }
+
+        .principle-box h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .principle-box p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════
+           PHASE BANNER
+        ═══════════════════════════════════ */
+        .phase-banner {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary-mid));
+            color: white;
+            border-radius: var(--radius);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .phase-num {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .phase-info h3 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .phase-info p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ═══════════════════════════════════
+           PILLAR CARDS
+        ═══════════════════════════════════ */
+        .pillar-grid {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .pillar-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+        }
+
+        .pillar-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .pillar-icon.teal {
+            background: var(--primary-ultra);
+        }
+
+        .pillar-icon.orange {
+            background: var(--accent-light);
+        }
+
+        .pillar-icon.green {
+            background: #E8F5EE;
+        }
+
+        .pillar-num-badge {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .pillar-header h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .pillar-header p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .pillar-body {
+            padding: 20px;
+        }
+
+        .info-bar {
+            border-left: 3px solid;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 10px 14px;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .info-bar.teal {
+            background: var(--primary-ultra);
+            border-color: var(--primary);
+            color: var(--primary-dark);
+        }
+
+        .info-bar.orange {
+            background: #FFF8F0;
+            border-color: var(--accent);
+            color: #7A4010;
+        }
+
+        .info-bar strong {
+            font-weight: 600;
+        }
+
+        .tip-list {
+            list-style: none;
+            margin: 12px 0 16px;
+        }
+
+        .tip-list li {
+            font-size: 13px;
+            color: var(--text);
+            padding: 4px 0 4px 22px;
+            position: relative;
+        }
+
+        .tip-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* ═══════════════════════════════════
+           SCRIPT BLOCKS
+        ═══════════════════════════════════ */
+        .script-block {
+            background: #F8FBFA;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin-top: 14px;
+        }
+
+        .script-header {
+            background: var(--primary-dark);
+            padding: 8px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .script-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary-light);
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.18s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .script-text {
+            padding: 14px 16px;
+            font-size: 13.5px;
+            line-height: 1.75;
+            color: var(--text);
+            white-space: pre-wrap;
+        }
+
+        /* ═══════════════════════════════════
+           OBJECTION MATRIX
+        ═══════════════════════════════════ */
+        .objection-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .obj-header {
+            padding: 13px 20px;
+            background: #FFF6EE;
+            border-bottom: 1px solid #FFE5CC;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .obj-num {
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .obj-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-dark);
+        }
+
+        .obj-body {
+            padding: 16px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .obj-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .obj-col h5 {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .obj-col.maieutica h5 {
+            color: var(--primary-dark);
+        }
+
+        .obj-col.deflexao h5 {
+            color: var(--purple);
+        }
+
+        .obj-response {
+            font-size: 13px;
+            line-height: 1.65;
+            color: var(--text);
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            padding: 12px 12px 12px 16px;
+            border-left: 3px solid;
+            font-style: italic;
+        }
+
+        .obj-col.maieutica .obj-response {
+            border-color: var(--primary);
+        }
+
+        .obj-col.deflexao .obj-response {
+            border-color: var(--purple);
+        }
+
+        /* ═══════════════════════════════════
+           FOLLOW-UP
+        ═══════════════════════════════════ */
+        .timeline-bar {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .tl-step {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .tl-step:last-child {
+            border-right: none;
+        }
+
+        .tl-step.first {
+            background: var(--primary-ultra);
+        }
+
+        .tl-time {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 3px;
+        }
+
+        .tl-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .tl-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .msg-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .msg-header {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .msg-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .msg-num {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .m1 {
+            background: var(--primary);
+        }
+
+        .m2 {
+            background: var(--primary-mid);
+        }
+
+        .m3 {
+            background: var(--accent-dark);
+        }
+
+        .msg-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .msg-timing {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .msg-body {
+            padding: 16px 20px;
+        }
+
+        .msg-tip {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        /* ═══════════════════════════════════
+           KPI / FUNIL
+        ═══════════════════════════════════ */
+        .funnel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .funnel-row {
+            display: flex;
+            align-items: center;
+            padding: 13px 20px;
+            gap: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .funnel-row:last-child {
+            border-bottom: none;
+        }
+
+        .funnel-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .funnel-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            min-width: 210px;
+        }
+
+        .funnel-bar {
+            flex: 1;
+            height: 7px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .funnel-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            border-radius: 4px;
+        }
+
+        .funnel-fill.accent {
+            background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+        }
+
+        .funnel-meta {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 16px;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .kpi-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            background: var(--primary-ultra);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .kpi-name {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .kpi-target {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .kpi-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .kpi-how {
+            font-size: 12px;
+            color: var(--text);
+            background: var(--bg);
+            border-left: 3px solid var(--primary-light);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 8px 10px;
+            line-height: 1.5;
+        }
+
+        /* ═══════════════════════════════════
+           AUDIT / CHECKLISTS
+        ═══════════════════════════════════ */
+        .audit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 640px) {
+            .audit-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .audit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .audit-head {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary-mid));
+            color: white;
+            padding: 16px 20px;
+        }
+
+        .audit-day {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary-light);
+            margin-bottom: 4px;
+        }
+
+        .audit-head h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .audit-meta {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .audit-body {
+            padding: 16px 20px;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--bg);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .check-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 2px solid var(--border);
+            background: white;
+            cursor: pointer;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.18s;
+            margin-top: 1px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .check-box.checked {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .check-label {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.45;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.18s;
+        }
+
+        .checklist li.done .check-label {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .reset-btn {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: color 0.18s;
+        }
+
+        .reset-btn:hover {
+            color: var(--danger);
+        }
+
+        /* ═══════════════════════════════════
+           CYCLE WIDGET
+        ═══════════════════════════════════ */
+        .cycle-row {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 28px;
+        }
+
+        .cycle-step {
+            flex: 1;
+            padding: 18px 12px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .cycle-step:last-child {
+            border-right: none;
+        }
+
+        .cycle-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .cycle-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .cycle-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* ═══════════════════════════════════
+           DIVIDER / UTILS
+        ═══════════════════════════════════ */
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 28px 0;
+        }
+
+        [id] {
+            scroll-margin-top: 130px;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                padding: 24px 16px 80px;
+            }
+
+            .hero {
+                padding: 40px 18px 36px;
+            }
+
+            .funnel-label {
+                min-width: 140px;
+            }
+        }
+
+        @media print {
+
+            .header,
+            .module-nav {
+                position: static;
+            }
+
+            .module-section {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="header">
+        <div class="header-brand">
+            <div class="header-logo">SA</div>
+            <div>
+                <div class="header-text-title">Treinamento Comercial</div>
+                <div class="header-text-sub">Clínica Sant'Anna · Vinhedo/SP</div>
+            </div>
+        </div>
+        <div class="header-badge">5 Módulos</div>
+    </header>
+
+    <!-- ═══ NAV ═══ -->
+    <nav class="module-nav">
+        <div class="module-nav-inner">
+            <a class="nav-tab active" onclick="showModule(1,this)" href="javascript:void(0)">
+                <span class="nav-num">1</span> Fluxo Consultivo
+            </a>
+            <a class="nav-tab" onclick="showModule(2,this)" href="javascript:void(0)">
+                <span class="nav-num">2</span> Matriz de Objeções
+            </a>
+            <a class="nav-tab" onclick="showModule(3,this)" href="javascript:void(0)">
+                <span class="nav-num">3</span> Follow-up 72h
+            </a>
+            <a class="nav-tab" onclick="showModule(4,this)" href="javascript:void(0)">
+                <span class="nav-num">4</span> Indicadores
+            </a>
+            <a class="nav-tab" onclick="showModule(5,this)" href="javascript:void(0)">
+                <span class="nav-num">5</span> Auditoria
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <div class="hero">
+        <div class="hero-eyebrow">Manual de Vendas · Clínica Sant'Anna</div>
+        <h1 class="hero-title">Atendimento que <em>converte</em>,<br>experiência que <em>fideliza</em></h1>
+        <p class="hero-desc">Guia completo para transformar leads frios em pacientes, através da prática da <b>venda
+                consultiva</b>.</p>
+        <div class="hero-concept">
+            <div class="hero-concept-label">Conceito Central</div>
+            <p>"Não vendemos vacinas. Vendemos aplicação profissional, segura e acompanhamento personalizado."</p>
+        </div>
+        <div class="hero-pillars">
+            <div class="hero-pillar">🔒 Segurança</div>
+            <div class="hero-pillar">💬 Orientação</div>
+            <div class="hero-pillar">🤝 Acolhimento</div>
+            <div class="hero-pillar">☀️ Tranquilidade</div>
+        </div>
+    </div>
+
+    <!-- ═══ MAIN ═══ -->
+    <main class="main">
+
+        <!-- ════════════════════════════════════════════
+         MÓDULO 1 — FLUXO CONSULTIVO
+    ════════════════════════════════════════════ -->
+        <section id="module1" class="module-section active">
+
+            <div class="section-eyebrow">Módulo 1</div>
+            <h2 class="section-title">Fluxo de Atendimento Consultivo</h2>
+            <p class="section-desc">2 fases · 3 pilares · scripts completos. Entender antes de oferecer — sempre.</p>
+
+            <div class="principle-box">
+                <div class="label">Regra de Ouro do Atendimento <br>Dominando a Venda Consultiva</div>
+                <h3>Nunca ofereça produto antes de entender a dor do cliente</h3>
+                <p>Venda consultiva significa diagnóstico primeiro, prescrição depois. Quando você entende o que o
+                    cliente realmente precisa, você vende com autoridade — não com desconto. Essa é a diferença entre
+                    uma farmácia e a Clínica Sant'Anna.</p>
+            </div>
+
+            <!-- ── FASE 1 ── -->
+            <div class="phase-banner">
+                <div class="phase-num">1</div>
+                <div class="phase-info">
+                    <h3>Fase 1 — Qualificação e Conexão</h3>
+                    <p>O Diagnóstico: entender, conectar, preparar a venda</p>
+                </div>
+            </div>
+
+            <div class="pillar-grid">
+
+                <!-- Pilar 1 -->
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon teal">👋</div>
+                        <div>
+                            <div class="pillar-num-badge">Pilar 1</div>
+                            <h4>Humanização Imediata — O Quebra-gelo</h4>
+                            <p>Criar conexão real desde a primeira mensagem</p>
+                        </div>
+                    </div>
+                    <div class="pillar-body">
+                        <div class="info-bar teal"><strong>Objetivo:</strong> O cliente deve sentir que está falando com
+                            uma pessoa que se importa — não com um robô ou um atendente de call center.</div>
+                        <ul class="tip-list">
+                            <li>Use o nome do cliente desde a primeira mensagem</li>
+                            <li>Apresente-se pelo seu nome (não só "Sant'Anna")</li>
+                            <li>Tom caloroso e conversacional — nunca mecânico</li>
+                            <li>Abra imediatamente a conversa para o diagnóstico</li>
+                        </ul>
+                        <div class="script-block">
+                            <div class="script-header">
+                                <span class="script-label">Abertura Padrão (Horário Comercial)</span>
+                                <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                            </div>
+                            <div class="script-text">Olá! A Clínica Sant’Anna agradece seu contato.
+
+Além de vacinas, temos profissionais especialistas em Cardiologia, Vascular, Pediatria, Psicanálise e contamos, ainda, com furo humanizado.
+
+Como posso te ajudar hoje?</div>
+                        </div>
+                        <div class="script-block">
+                            <div class="script-header">
+                                <span class="script-label">Mensagem de Ausência (Fora do Horário)</span>
+                                <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                            </div>
+                            <div class="script-text">Agradecemos sua mensagem! Não estamos disponíveis no momento, mas responderemos assim que possível. Nosso horário de funcionamento é de segunda a sexta feira das 08h às 18h00 e aos sábados das 09h às 13h. Até lá, podemos adiantar seu atendimento.
+
+*Por gentileza, nos informe seu nome, idade, sua dúvida e a vacina de seu interesse.* É uma alegria poder te auxiliar!</div>
+                        </div>
+                        <div class="script-block">
+                            <div class="script-header">
+                                <span class="script-label">Apresentação + Pergunta de Nome</span>
+                                <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                            </div>
+                            <div class="script-text">Bom dia! Tudo bem? Eu me chamo [Seu Nome]! Qual é seu nome, por gentileza?</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pilar 2 -->
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon teal">🔍</div>
+                        <div>
+                            <div class="pillar-num-badge">Pilar 2</div>
+                            <h4>Pergunta de Diagnóstico — A Dor</h4>
+                            <p>Ouvir sem interromper. Entender antes de oferecer qualquer coisa</p>
+                        </div>
+                    </div>
+                    <div class="pillar-body">
+                        <div class="info-bar teal"><strong>Objetivo:</strong> Identificar exatamente o que o cliente
+                            precisa, pra quem é e qual a urgência — antes de qualquer número aparecer.</div>
+                        <div class="info-bar orange">⚠️ <strong>Regra absoluta:</strong> NUNCA cite preço antes de
+                            entender a necessidade. Cliente que recebe preço sem contexto vai pesquisar a concorrência.
+                        </div>
+                        <ul class="tip-list">
+                            <li>Faça uma pergunta por vez — não sobrecarregue</li>
+                            <li>Ouça sem interromper; deixe o cliente se expressar</li>
+                            <li>Mapeie mentalmente: quem, o quê e quando</li>
+                        </ul>
+                        <div class="script-block">
+                            <div class="script-header">
+                                <span class="script-label">Script de Diagnóstico</span>
+                                <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                            </div>
+                            <div class="script-text">Me conta um pouco mais sobre o que você está buscando:
+
+                                — O que te motivou a procurar essa vacina agora?
+                                — É pra qual faixa etária?
+                                — Veio de indicação médica, ou você pesquisou por conta própria?
+
+                                (Aguarde a resposta completa antes de continuar)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pilar 3 -->
+                <div class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-icon orange">🌉</div>
+                        <div>
+                            <div class="pillar-num-badge">Pilar 3</div>
+                            <h4>Validação Empática — A Ponte</h4>
+                            <p>Confirmar que você entendeu e construir autoridade antes de vender</p>
+                        </div>
+                    </div>
+                    <div class="pillar-body">
+                        <div class="info-bar teal"><strong>Objetivo:</strong> Fazer o cliente se sentir compreendido e
+                            validado — e introduzir naturalmente o diferencial da Sant'Anna.</div>
+                        <ul class="tip-list">
+                            <li>Repita o problema com as suas próprias palavras (demonstra escuta)</li>
+                            <li>Valide a decisão do cliente de buscar vacinação agora</li>
+                            <li>Introduza o diferencial Sant'Anna de forma natural, sem forçar</li>
+                        </ul>
+                        <div class="script-block">
+                            <div class="script-header">
+                                <span class="script-label">Script de Validação Empática</span>
+                                <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                            </div>
+                            <div class="script-text">Entendo perfeitamente, [Nome]. Você está no caminho certo em se
+                                preocupar com isso agora 🌿
+
+                                [Vacina X] é realmente importante [para essa fase / faixa etária / período do ano], e é
+                                ótimo que você esteja tomando essa iniciativa.
+
+                                Aqui na Sant'Anna, além de aplicar a vacina, a gente orienta sobre o esquema completo de
+                                doses, os cuidados pós-aplicação e o que observar depois — e nossa equipe fica
+                                disponível pra qualquer dúvida que surgir. Isso faz toda a diferença na hora de escolher
+                                onde se vacinar 😊</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── FASE 2 ── -->
+            <div class="phase-banner">
+                <div class="phase-num">2</div>
+                <div class="phase-info">
+                    <h3>Fase 2 — Venda e Autoridade</h3>
+                    <p>A Prescrição: apresentar o valor, não apenas o preço</p>
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-header">
+                    <div class="pillar-icon green">💎</div>
+                    <div>
+                        <div class="pillar-num-badge">Fase 2 · Scripts de Venda</div>
+                        <h4>Apresentação de Valor com Ancoragem</h4>
+                        <p>Quando o cliente pede o preço, você já deve ter construído valor suficiente para sustentá-lo
+                        </p>
+                    </div>
+                </div>
+                <div class="pillar-body">
+                    <div class="info-bar teal"><strong>Princípio:</strong> Não apresente preço como preço — apresente
+                        como investimento em um serviço completo. Sempre expanda o que está incluído antes de revelar o
+                        valor.</div>
+                    <ul class="tip-list">
+                        <li>Sempre diga o que está "incluído" no valor antes ou junto com o número</li>
+                        <li>Posicione a farmácia como "só a seringa" — Sant'Anna como "tranquilidade completa"</li>
+                        <li>Se houver resistência ao preço, vá para o Módulo 2 (Matriz de Objeções)</li>
+                        <li>Feche com uma pergunta de agendamento — não deixe em aberto</li>
+                    </ul>
+                    <div class="script-block">
+                        <div class="script-header">
+                            <span class="script-label">Script de Apresentação de Preço</span>
+                            <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                        </div>
+                        <div class="script-text">[Nome], a vacina de [Nome da Vacina] está *R$ [Valor Maior]* no cartão (em até X vezes sem juros) e *R$ [Valor Menor]* no dinheiro ou pix.
+
+E deixa eu te explicar o que está incluído nesse investimento:
+✅ Vacina com procedência e cadeia de frio 100% garantida
+✅ Orientação completa sobre doses e cuidados pós-vacina
+✅ Armazenamento certificado com temperatura monitorada
+✅ Suporte direto comigo se surgir qualquer dúvida depois
+
+Em muitos lugares você paga só pela aplicação mecânica. Aqui você garante segurança e tranquilidade do começo ao fim 🌿
+
+O(a) senhor(a) gostaria de agendar?</div>
+                    </div>
+
+                    <div class="script-block">
+                        <div class="script-header">
+                            <span class="script-label">Formulário de Cadastro Padrão (Fechamento)</span>
+                            <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                        </div>
+                        <div class="script-text">Perfeito! Por gentileza, preciso que me envie os seguintes dados para o cadastro:
+
+*Cadastro*
+Nome completo:
+Data Nascimento:
+CPF:
+RG:
+Sexo:
+Celular:
+Endereço e complemento:
+Numero:
+Bairro:
+Cidade:
+CEP:
+Alergias:
+
+*Dados do responsável financeiro*
+Nome:
+CPF:
+Data Nascimento:
+
+Gestante:
+Previsão do parto:
+
+Como conheceu nossa clínica?</div>
+                    </div>
+                    <div class="script-block">
+                        <div class="script-header">
+                            <span class="script-label">Script Padrão Sant'Anna — Objeção de Preço</span>
+                            <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                        </div>
+                        <div class="script-text">Entendo, e é super normal comparar 😊
+
+                            Quando se trata de vacina, o mais importante não é só o valor isolado — é ter a segurança de
+                            que você está fazendo a escolha certa, com orientação adequada, aplicação segura e suporte
+                            da equipe.
+
+                            Aqui na Sant'Anna, nosso cuidado é justamente garantir essa tranquilidade em todo o
+                            processo.
+
+                            Nosso papel é te ajudar a tomar a decisão mais segura, não apenas a mais barata 💙</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ════════════════════════════════════════════
+         MÓDULO 2 — MATRIZ DE OBJEÇÕES
+    ════════════════════════════════════════════ -->
+        <section id="module2" class="module-section">
+
+            <div class="section-eyebrow">Módulo 2</div>
+            <h2 class="section-title">Matriz de Objeções</h2>
+            <p class="section-desc">Método Maiêutica: o cliente percebe o valor através das próprias respostas — sem
+                confronto direto.</p>
+
+            <div class="principle-box">
+                <div class="label">Método Maiêutica — O Princípio</div>
+                <h3>Matar objeção é saber perguntar bem</h3>
+                <p>Em vez de contra-argumentar diretamente (o que gera defensividade), use perguntas que levam o próprio
+                    cliente a perceber o valor por conta própria. A maioria das objeções se dissolve quando o cliente é
+                    convidado a refletir mais fundo sobre o que realmente importa pra ele. Você não convence — você
+                    guia.</p>
+            </div>
+
+            <!-- Objeção 1: Cobrir Orçamento -->
+            <div class="objection-card">
+                <div class="obj-header">
+                    <div class="obj-num">1</div>
+                    <div class="obj-text">"Vocês cobrem orçamento? Vi mais barato em outra clínica."</div>
+                </div>
+                <div style="padding: 12px 20px; background: #fff1f0; border-bottom: 1px solid #ffd4d1;">
+                    <strong style="color: #d32f2f; font-size: 13px;">❌ NUNCA FAÇA:</strong>
+                    <p style="font-size: 12px; color: #5f2120; margin-top: 4px;">Enviar o texto automático de regras institucionais: <em>"Caso encontre um valor mais acessível em outra clínica... Ressaltamos que analisamos apenas orçamentos de clínicas especializadas..."</em> Isso soa robótico, afasta o cliente e quebra toda a conexão criada.</p>
+                </div>
+                <div class="obj-body">
+                    <div class="obj-col maieutica">
+                        <h5>🧠 Pergunta Maiêutica</h5>
+                        <div class="obj-response">Entendo perfeitamente, [Nome], é super normal comparar! 😊 Posso encaminhar o orçamento para o financeiro avaliar sim. Mas me conta: além do valor, o que é mais importante pra você nessa escolha de onde se vacinar?</div>
+                    </div>
+                    <div class="obj-col deflexao">
+                        <h5>↩️ Deflexão (Agregando Valor)</h5>
+                        <div class="obj-response">Nós avaliamos orçamentos de outras clínicas especializadas sim! Lembre-se que aqui na Sant'Anna, nosso valor inclui não só a vacina, mas todo o acompanhamento e a segurança da nossa cadeia de frio. Posso ver com o financeiro o que conseguimos fazer para você não abrir mão dessa qualidade?</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objeção 2 -->
+            <div class="objection-card">
+                <div class="obj-header">
+                    <div class="obj-num">2</div>
+                    <div class="obj-text">"Vou pensar mais um pouco."</div>
+                </div>
+                <div class="obj-body">
+                    <div class="obj-col maieutica">
+                        <h5>🧠 Pergunta Maiêutica</h5>
+                        <div class="obj-response">Claro! Me ajuda a entender: o que ainda está gerando dúvida pra você?
+                            Tem alguma informação que eu posso te dar agora pra facilitar essa decisão?</div>
+                    </div>
+                    <div class="obj-col deflexao">
+                        <h5>↩️ Deflexão</h5>
+                        <div class="obj-response">Sem problema! Só me conta: você já tem em mente quando pretende se
+                            vacinar? Assim já consigo verificar a agenda aqui pra você.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objeção 3 -->
+            <div class="objection-card">
+                <div class="obj-header">
+                    <div class="obj-num">3</div>
+                    <div class="obj-text">"Preciso pesquisar mais antes de decidir."</div>
+                </div>
+                <div class="obj-body">
+                    <div class="obj-col maieutica">
+                        <h5>🧠 Pergunta Maiêutica</h5>
+                        <div class="obj-response">Ótimo! O que você ainda quer saber que eu ainda não te expliquei?
+                            Posso te passar qualquer informação técnica sobre a vacina agora mesmo.</div>
+                    </div>
+                    <div class="obj-col deflexao">
+                        <h5>↩️ Deflexão</h5>
+                        <div class="obj-response">O que é mais importante pra você na hora de escolher onde se vacinar?
+                            Quero entender o que faria mais sentido na sua situação.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objeção 4 -->
+            <div class="objection-card">
+                <div class="obj-header">
+                    <div class="obj-num">4</div>
+                    <div class="obj-text">"Na farmácia é mais prático / conveniente."</div>
+                </div>
+                <div class="obj-body">
+                    <div class="obj-col maieutica">
+                        <h5>🧠 Pergunta Maiêutica</h5>
+                        <div class="obj-response">Prático como — fica mais perto de você, ou o horário funciona melhor?
+                            Dependendo, posso ter uma solução aqui que resolve exatamente isso.</div>
+                    </div>
+                    <div class="obj-col deflexao">
+                        <h5>↩️ Deflexão</h5>
+                        <div class="obj-response">Você já chegou a verificar se a farmácia tem a vacina que você precisa
+                            em estoque agora? Às vezes a disponibilidade surpreende...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objeção 5 -->
+            <div class="objection-card">
+                <div class="obj-header">
+                    <div class="obj-num">5</div>
+                    <div class="obj-text">"Vou consultar meu médico antes."</div>
+                </div>
+                <div class="obj-body">
+                    <div class="obj-col maieutica">
+                        <h5>🧠 Pergunta Maiêutica</h5>
+                        <div class="obj-response">Ótima ideia! Quer que eu te mande alguma informação técnica sobre a
+                            vacina pra facilitar a conversa com ele? Assim você chega com mais contexto.</div>
+                    </div>
+                    <div class="obj-col deflexao">
+                        <h5>↩️ Deflexão</h5>
+                        <div class="obj-response">Perfeito! Quando você tiver a orientação dele, pode contar comigo
+                            aqui. Você já sabe quando vai consultar com ele?</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objeção 6 -->
+            <div class="objection-card">
+                <div class="obj-header">
+                    <div class="obj-num">6</div>
+                    <div class="obj-text">"Está longe da minha casa."</div>
+                </div>
+                <div class="obj-body">
+                    <div class="obj-col maieutica">
+                        <h5>🧠 Pergunta Maiêutica</h5>
+                        <div class="obj-response">Entendo! Você sabia que a gente também faz vacinação domiciliar? A
+                            gente vai até você. Como seria mais confortável pra sua situação?</div>
+                    </div>
+                    <div class="obj-col deflexao">
+                        <h5>↩️ Deflexão</h5>
+                        <div class="obj-response">Onde você fica? Dependendo da região, nosso atendimento domiciliar
+                            pode resolver isso sem nenhum deslocamento da sua parte.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objeção 7 -->
+            <div class="objection-card">
+                <div class="obj-header">
+                    <div class="obj-num">7</div>
+                    <div class="obj-text">"Vocês atendem convênio?"</div>
+                </div>
+                <div class="obj-body">
+                    <div class="obj-col maieutica">
+                        <h5>🧠 Pergunta Maiêutica</h5>
+                        <div class="obj-response">No momento não, entendo que isso pesa. Me conta: você sabe se o seu
+                            plano cobre vacinação com reembolso? Muitos cobrem parte e as pessoas não sabem.</div>
+                    </div>
+                    <div class="obj-col deflexao">
+                        <h5>↩️ Deflexão</h5>
+                        <div class="obj-response">Infelizmente ainda não. Mas considerando tudo que está incluído no
+                            atendimento, o que faria mais sentido pra você nessa decisão?</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ════════════════════════════════════════════
+         MÓDULO 3 — FOLLOW-UP 72H
+    ════════════════════════════════════════════ -->
+        <section id="module3" class="module-section">
+
+            <div class="section-eyebrow">Módulo 3</div>
+            <h2 class="section-title">Cadência de Follow-up — 72h de Resgate</h2>
+            <p class="section-desc">3 mensagens estratégicas para resgatar leads que não fecharam no primeiro contato.
+                Timing preciso é metade do resultado.</p>
+
+            <!-- Timeline -->
+            <div class="timeline-bar">
+                <div class="tl-step first">
+                    <div class="tl-time">Hora 0</div>
+                    <div class="tl-name">1º Contato</div>
+                    <div class="tl-desc">Lead chega</div>
+                </div>
+                <div class="tl-step">
+                    <div class="tl-time">≤ 4h</div>
+                    <div class="tl-name">Mensagem 1</div>
+                    <div class="tl-desc">Avanço Técnico</div>
+                </div>
+                <div class="tl-step">
+                    <div class="tl-time">24–48h</div>
+                    <div class="tl-name">Mensagem 2</div>
+                    <div class="tl-desc">Lembrança + Dor</div>
+                </div>
+                <div class="tl-step">
+                    <div class="tl-time">48–72h</div>
+                    <div class="tl-name">Mensagem 3</div>
+                    <div class="tl-desc">Janela Final</div>
+                </div>
+            </div>
+
+            <!-- Mensagem 1 -->
+            <div class="msg-card">
+                <div class="msg-header">
+                    <div class="msg-info">
+                        <div class="msg-num m1">1</div>
+                        <div class="msg-title">O Avanço Técnico</div>
+                    </div>
+                    <div class="msg-timing">⏰ Enviar em até 4h</div>
+                </div>
+                <div class="msg-body">
+                    <div class="msg-tip">💡 Estratégia: Continua a conversa com uma informação técnica valiosa.
+                        Demonstra expertise, mantém o contato quente e não pressiona. O cliente lembra que você existe —
+                        e que você sabe do que está falando.</div>
+                    <div class="script-block">
+                        <div class="script-header">
+                            <span class="script-label">Mensagem 1 — WhatsApp</span>
+                            <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                        </div>
+                        <div class="script-text">Oi [Nome]! 😊 Aqui é [Seu Nome], da Clínica Sant'Anna, continuando
+                            nossa conversa de hoje.
+
+                            Queria te passar uma informação importante sobre a [Vacina X]:
+
+                            📌 [Insira dado técnico relevante]
+                            Ex: "A proteção da Influenza leva até 14 dias pra atingir o nível máximo após a aplicação —
+                            por isso, quanto antes você se vacinar, melhor a proteção nesta temporada!"
+
+                            Quando quiser garantir seu horário, é só me chamar aqui. Estou à disposição! 🌿</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensagem 2 -->
+            <div class="msg-card">
+                <div class="msg-header">
+                    <div class="msg-info">
+                        <div class="msg-num m2">2</div>
+                        <div class="msg-title">Lembrança Sutil + Relembrar a Dor</div>
+                    </div>
+                    <div class="msg-timing">⏰ 24–48h depois</div>
+                </div>
+                <div class="msg-body">
+                    <div class="msg-tip">💡 Estratégia: Reativa o contexto original (quem é o cliente, por que procurou)
+                        + cria prova social sutil + abre espaço para dúvidas. Tom: curioso e genuíno — nunca insistente.
+                    </div>
+                    <div class="script-block">
+                        <div class="script-header">
+                            <span class="script-label">Mensagem 2 — WhatsApp</span>
+                            <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                        </div>
+                        <div class="script-text">Oi [Nome], tudo bem? 🌿
+
+                            Passando pra saber se surgiu alguma dúvida sobre a [Vacina X] desde a nossa conversa.
+
+                            Essa semana atendemos vários pacientes que estão se protegendo contra [doença relacionada] —
+                            é uma época importante pra isso mesmo 😊
+
+                            O que ainda ficou de dúvida pra você? Posso esclarecer qualquer coisa agora!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensagem 3 -->
+            <div class="msg-card">
+                <div class="msg-header">
+                    <div class="msg-info">
+                        <div class="msg-num m3">3</div>
+                        <div class="msg-title">A Janela de Oportunidade + Iniciativa Positiva</div>
+                    </div>
+                    <div class="msg-timing">⏰ 48–72h depois</div>
+                </div>
+                <div class="msg-body">
+                    <div class="msg-tip">💡 Estratégia: Dizer "última mensagem" explicitamente reduz a ansiedade do
+                        cliente e aumenta a taxa de resposta. Cria urgência real. Termina com saída gentil e positiva —
+                        sem pressão, sem abandono.</div>
+                    <div class="script-block">
+                        <div class="script-header">
+                            <span class="script-label">Mensagem 3 — WhatsApp</span>
+                            <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                        </div>
+                        <div class="script-text">Oi [Nome]! 👋 Última mensagem, prometo! haha
+
+                            Tenho horários disponíveis essa semana e queria te dar uma última chance de garantir sua
+                            proteção antes de [contexto: "a temporada de gripe chegar forte" / "sua viagem" / "o período
+                            ideal passar"].
+
+                            Se for o momento certo pra você, me fala e eu já reservo um horário especialmente pra você
+                            😊
+
+                            Se não for agora — sem problema! Guardarei seu contato e quando precisar, a Sant'Anna está
+                            aqui com o maior cuidado. 🤝</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bônus: Pós-Venda -->
+            <div class="msg-card" style="border-color: var(--success);">
+                <div class="msg-header" style="background: #E8F5EE; border-bottom-color: #D1E8DB;">
+                    <div class="msg-info">
+                        <div class="msg-num" style="background: var(--success);">⭐</div>
+                        <div class="msg-title" style="color: var(--primary-dark);">Bônus: O Pós-Venda que Fideliza</div>
+                    </div>
+                    <div class="msg-timing" style="background: white;">⏰ Dias após a aplicação</div>
+                </div>
+                <div class="msg-body">
+                    <div class="msg-tip">💡 Estratégia: O cliente que já comprou é seu melhor promotor. Perguntar sobre reações mostra cuidado genuíno e abre portas para pedir uma avaliação no Google.</div>
+                    <div class="script-block">
+                        <div class="script-header" style="background: var(--success);">
+                            <span class="script-label">Pós-Vacina + Pedido de Avaliação</span>
+                            <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+                        </div>
+                        <div class="script-text">Oi [Nome]! Gostaria de saber como você ficou após a vacinação. Teve alguma reação? Está tudo bem?
+
+[Aguarde a resposta. Se tudo estiver bem, continue:]
+
+Que ótimo! Aproveito a oportunidade para agradecer pela confiança em nosso atendimento. O seu feedback é super importante para nós: se puder, avalie o nosso serviço no Google, clicando neste link: [Seu Link do Google]
+
+Obrigada! 💛</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ════════════════════════════════════════════
+         MÓDULO 4 — INDICADORES
+    ════════════════════════════════════════════ -->
+        <section id="module4" class="module-section">
+
+            <div class="section-eyebrow">Módulo 4</div>
+            <h2 class="section-title">Gestão por Indicadores</h2>
+            <p class="section-desc">Metas de processo analisando o funil completo. O que não é medido, não é gerenciado
+                — e o que não é gerenciado, não melhora.</p>
+
+            <!-- Funil -->
+            <p
+                style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+                Funil de Conversão</p>
+            <div class="funnel">
+                <div class="funnel-row">
+                    <div class="funnel-icon">📥</div>
+                    <div class="funnel-label">Leads recebidos</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width:100%"></div>
+                    </div>
+                    <div class="funnel-meta">100% — base</div>
+                </div>
+                <div class="funnel-row">
+                    <div class="funnel-icon">⚡</div>
+                    <div class="funnel-label">Respondidos em &lt; 30 min</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width:90%"></div>
+                    </div>
+                    <div class="funnel-meta">Meta: 90%</div>
+                </div>
+                <div class="funnel-row">
+                    <div class="funnel-icon">🔍</div>
+                    <div class="funnel-label">Qualificados (chegam ao preço)</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width:70%"></div>
+                    </div>
+                    <div class="funnel-meta">Meta: 70%</div>
+                </div>
+                <div class="funnel-row">
+                    <div class="funnel-icon">✅</div>
+                    <div class="funnel-label">Conversão direta (1º contato)</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill" style="width:30%"></div>
+                    </div>
+                    <div class="funnel-meta">Meta: 30%</div>
+                </div>
+                <div class="funnel-row">
+                    <div class="funnel-icon">🔄</div>
+                    <div class="funnel-label">Resgatados via follow-up 72h</div>
+                    <div class="funnel-bar">
+                        <div class="funnel-fill accent" style="width:20%"></div>
+                    </div>
+                    <div class="funnel-meta">Meta: 20%</div>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <p
+                style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">
+                KPIs Operacionais</p>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">⚡</div>
+                    <div class="kpi-name">Tempo de 1ª Resposta</div>
+                    <div class="kpi-target">&lt; 30 min</div>
+                    <div class="kpi-desc">Do lead entrar até a primeira mensagem enviada pelo time</div>
+                    <div class="kpi-how">⚠️ Crítico acima de 2h — leads esfriados vão pesquisar a concorrência
+                        imediatamente</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🎯</div>
+                    <div class="kpi-name">Taxa de Qualificação</div>
+                    <div class="kpi-target">&gt; 70%</div>
+                    <div class="kpi-desc">% de leads que chegam à apresentação de preço após diagnóstico</div>
+                    <div class="kpi-how">Se abaixo: o diagnóstico não está funcionando. Revisar Pilares 1 e 2 do Módulo
+                        1</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">💰</div>
+                    <div class="kpi-name">Conversão Direta</div>
+                    <div class="kpi-target">&gt; 30%</div>
+                    <div class="kpi-desc">% que fecha no primeiro contato sem precisar de follow-up</div>
+                    <div class="kpi-how">Se abaixo: a ancoragem de valor na Fase 2 precisa ser mais forte e clara</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🔄</div>
+                    <div class="kpi-name">Taxa de Resgate</div>
+                    <div class="kpi-target">&gt; 20%</div>
+                    <div class="kpi-desc">% dos leads não convertidos que fecham via cadência de follow-up</div>
+                    <div class="kpi-how">Se abaixo: revisar timing e texto das mensagens do Módulo 3</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">🏷️</div>
+                    <div class="kpi-name">Ticket Médio</div>
+                    <div class="kpi-target">↑ Crescente</div>
+                    <div class="kpi-desc">Valor médio por atendimento realizado na clínica</div>
+                    <div class="kpi-how">Acompanhar semana a semana. Ofertar pacotes e combos eleva o ticket
+                        naturalmente</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">⭐</div>
+                    <div class="kpi-name">NPS / Satisfação</div>
+                    <div class="kpi-target">&gt; 9.0</div>
+                    <div class="kpi-desc">Nota média de satisfação coletada após cada atendimento</div>
+                    <div class="kpi-how">Coletar via WhatsApp: "De 0 a 10, como foi seu atendimento na Sant'Anna hoje?"
+                    </div>
+                </div>
+            </div>
+
+            <div class="principle-box" style="margin-top: 28px;">
+                <div class="label">Review Semanal</div>
+                <h3>Segunda-feira: compare semana atual × semana anterior</h3>
+                <p>Para cada KPI abaixo da meta: identifique em qual etapa do funil o lead está sendo perdido. A etapa
+                    com maior perda é onde o time deve focar o treinamento naquela semana. Não tente corrigir tudo de
+                    uma vez — escolha um ponto focal por semana.</p>
+            </div>
+
+        </section>
+
+        <!-- ════════════════════════════════════════════
+         MÓDULO 5 — AUDITORIA
+    ════════════════════════════════════════════ -->
+        <section id="module5" class="module-section">
+
+            <div class="section-eyebrow">Módulo 5</div>
+            <h2 class="section-title">Ritual de Auditoria</h2>
+            <p class="section-desc">Checklist operacional de Segunda e Quarta. Consistência no processo cria
+                consistência nos resultados.</p>
+
+            <div class="principle-box">
+                <div class="label">Por que segunda e quarta?</div>
+                <h3>Segunda: planejamento. Quarta: correção de curso.</h3>
+                <p>Segunda é para olhar o retrovisor da semana anterior e definir o foco. Quarta é para verificar se o
+                    ritmo está certo antes que a semana acabe. Duas reuniões curtas valem mais do que uma grande reunião
+                    mensal — porque permitem ajuste enquanto ainda há tempo.</p>
+            </div>
+
+            <div class="audit-grid">
+                <!-- Segunda -->
+                <div class="audit-card">
+                    <div class="audit-head">
+                        <div class="audit-day">Segunda-feira · 10h · 30 min</div>
+                        <h3>📊 Review Semanal</h3>
+                        <div class="audit-meta">Análise completa da semana anterior</div>
+                    </div>
+                    <div class="audit-body">
+                        <ul class="checklist" id="cl-monday">
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Quantos leads chegaram na semana
+                                    passada?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Quantos foram qualificados
+                                    (chegaram ao preço)?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Quantos converteram direto no 1º
+                                    contato?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Quantos foram para a cadência de
+                                    follow-up?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Quantos foram resgatados no
+                                    follow-up 72h?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Qual foi a objeção mais frequente
+                                    da semana?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Qual script teve a melhor
+                                    performance?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">O que vou melhorar / testar essa
+                                    semana?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Todos os leads estão registrados
+                                    no sistema?</span>
+                            </li>
+                        </ul>
+                        <button class="reset-btn" onclick="resetList('cl-monday')">↺ Reiniciar checklist</button>
+                    </div>
+                </div>
+
+                <!-- Quarta -->
+                <div class="audit-card">
+                    <div class="audit-head">
+                        <div class="audit-day">Quarta-feira · 10h · 15 min</div>
+                        <h3>🎯 Check de Meio de Semana</h3>
+                        <div class="audit-meta">Correção de curso antes que seja tarde</div>
+                    </div>
+                    <div class="audit-body">
+                        <ul class="checklist" id="cl-wednesday">
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Quantos leads chegaram desde
+                                    segunda-feira?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Há algum lead "quente" esperando
+                                    follow-up hoje?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">O ritmo está no caminho da meta
+                                    semanal?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Alguma dúvida técnica recorrente
+                                    nos atendimentos?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Algum script precisa de ajuste
+                                    imediato?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">Todas as mensagens de follow-up
+                                    foram enviadas?</span>
+                            </li>
+                            <li>
+                                <div class="check-box" onclick="toggleCheck(this)"></div><span class="check-label"
+                                    onclick="toggleCheck(this.previousElementSibling)">NPS está sendo coletado após cada
+                                    atendimento?</span>
+                            </li>
+                        </ul>
+                        <button class="reset-btn" onclick="resetList('cl-wednesday')">↺ Reiniciar checklist</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ciclo -->
+            <p
+                style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin: 28px 0 14px;">
+                Ciclo de Melhoria Contínua</p>
+            <div class="cycle-row">
+                <div class="cycle-step">
+                    <div class="cycle-icon">📊</div>
+                    <div class="cycle-title">Medir</div>
+                    <div class="cycle-desc">Registrar métricas toda semana sem exceção</div>
+                </div>
+                <div class="cycle-step">
+                    <div class="cycle-icon">🔍</div>
+                    <div class="cycle-title">Identificar</div>
+                    <div class="cycle-desc">Onde o funil está quebrando essa semana?</div>
+                </div>
+                <div class="cycle-step">
+                    <div class="cycle-icon">🛠️</div>
+                    <div class="cycle-title">Ajustar</div>
+                    <div class="cycle-desc">Testar novo script ou abordagem pontual</div>
+                </div>
+                <div class="cycle-step">
+                    <div class="cycle-icon">🔁</div>
+                    <div class="cycle-title">Repetir</div>
+                    <div class="cycle-desc">Ciclo semanal constante — sem pular</div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        // ── Module switching ──────────────────────────────
+        function showModule(n, tab) {
+            document.querySelectorAll('.module-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('module' + n).classList.add('active');
+            tab.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ── Copy to clipboard ─────────────────────────────
+        function copyScript(btn) {
+            const text = btn.closest('.script-block').querySelector('.script-text').innerText;
+            const doFeedback = () => {
+                btn.textContent = '✓ Copiado!';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2200);
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(doFeedback).catch(() => fallbackCopy(text, doFeedback));
+            } else {
+                fallbackCopy(text, doFeedback);
+            }
+        }
+        function fallbackCopy(text, cb) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); cb(); } catch (e) { }
+            document.body.removeChild(ta);
+        }
+
+        // ── Checklist toggle ──────────────────────────────
+        function toggleCheck(box) {
+            const li = box.closest('li');
+            const on = box.classList.toggle('checked');
+            box.innerHTML = on ? '✓' : '';
+            li.classList.toggle('done', on);
+            saveList(li.closest('ul').id);
+        }
+        function saveList(id) {
+            const state = [...document.querySelectorAll('#' + id + ' .check-box')].map(b => b.classList.contains('checked'));
+            try { localStorage.setItem('sa_' + id, JSON.stringify(state)); } catch (e) { }
+        }
+        function loadList(id) {
+            try {
+                const state = JSON.parse(localStorage.getItem('sa_' + id));
+                if (!state) return;
+                document.querySelectorAll('#' + id + ' .check-box').forEach((box, i) => {
+                    if (state[i]) { box.classList.add('checked'); box.innerHTML = '✓'; box.closest('li').classList.add('done'); }
+                });
+            } catch (e) { }
+        }
+        function resetList(id) {
+            document.querySelectorAll('#' + id + ' .check-box').forEach(box => {
+                box.classList.remove('checked'); box.innerHTML = '';
+                box.closest('li').classList.remove('done');
+            });
+            try { localStorage.removeItem('sa_' + id); } catch (e) { }
+        }
+
+        // ── Init ──────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            loadList('cl-monday');
+            loadList('cl-wednesday');
+        });
+    </script>
+</body>
+
+</html>
